@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablée – Plan your night in 10 seconds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF0FF;--surface:#fff;--ink:#12163A;--muted:#4C5280;--blue:#2340E0;--on-blue:#fff;--sun:#FFD23F;--pink:#FF7AA8;--line:#C9D3F5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1330;--surface:#1A2050;--ink:#F1F3FF;--muted:#A9B1E6;--blue:#7C93FF;--on-blue:#0F1330;--line:#2E3778}}
+:root[data-theme="dark"]{--bg:#0F1330;--surface:#1A2050;--ink:#F1F3FF;--muted:#A9B1E6;--blue:#7C93FF;--on-blue:#0F1330;--line:#2E3778}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'Instrument Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+#intro{min-height:100vh;display:flex;align-items:center;background:var(--ink);color:var(--bg);padding:48px 20px}
+#intro[hidden]{display:none}
+.iw{max-width:1040px;margin:0 auto;width:100%}
+.ih{font-size:clamp(36px,7vw,72px);font-weight:800;max-width:16ch;color:var(--bg)}
+.ip{font-size:clamp(17px,2.2vw,22px);max-width:52ch;opacity:.85;margin:18px 0 36px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.st{border:2px solid var(--sun);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.st b{font:800 clamp(44px,7vw,72px)/1 'Fraunces',Georgia,serif;color:var(--sun)}
+.st span{font-size:16px;opacity:.9}
+.st i{font-style:normal;font-weight:700;color:var(--sun)}
+.ph{outline:2px dashed var(--pink);outline-offset:3px}
+.ih{font-size:clamp(32px,5vw,56px);max-width:22ch}
+.ip{margin:14px 0 24px}
+.ch{border:2px solid var(--sun);border-radius:18px;padding:18px}
+.ch+.ch2,.ch2{margin-top:16px}
+.ch h3{font-size:18px;color:var(--bg);margin-bottom:14px;line-height:1.2}
+.ch2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.bars{display:flex;gap:16px;align-items:flex-end}
+.bars.two{max-width:260px}
+.bc{flex:1;text-align:center}
+.bv{font:800 clamp(28px,4.5vw,46px)/1 'Fraunces',Georgia,serif;color:var(--sun)}
+.bs{font-size:14px;opacity:.85;margin:4px 0 8px}
+.bw{height:150px;display:flex;align-items:flex-end}
+.bar{width:100%;background:var(--sun);border-radius:6px 6px 0 0}
+.bar.up{background:var(--pink)}
+.bl{font-weight:600;font-size:15px;margin-top:8px}
+.big2{font:800 clamp(40px,6vw,64px)/1 'Fraunces',Georgia,serif;color:var(--pink);margin-top:14px}
+#homechart{width:100%;height:auto;color:var(--bg)}
+.dbars{display:flex;gap:16px}
+.dc{flex:1;text-align:center}
+.dl{font:700 clamp(15px,2vw,20px)/1.15 'Fraunces',Georgia,serif;min-height:2.4em;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;border-bottom:2px solid var(--sun)}
+.db{width:70%;margin:0 auto;background:var(--sun);border-radius:0 0 6px 6px}
+.dc .bv{margin-top:12px}
+.gm{margin-top:16px}
+.gm h3{margin-bottom:10px}
+.gmn{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.gmn b{font:800 clamp(36px,6vw,60px)/1 'Fraunces',Georgia,serif;color:var(--sun)}
+.gmn span{font-size:28px;opacity:.7}
+.gmn i{font:800 clamp(36px,6vw,60px)/1 'Fraunces',Georgia,serif;font-style:normal;color:var(--pink)}
+.src{font-size:14px;opacity:.7;margin:20px 0 28px}
+.start{background:var(--sun);color:#12163A;font-size:20px;padding:15px 36px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font:800 24px 'Fraunces',Georgia,serif}
+.logo span{background:var(--sun);color:#12163A;padding:0 8px;border-radius:8px;margin-right:4px}
+h1{font-size:clamp(38px,8vw,76px);font-weight:800;max-width:15ch}
+.lead{font-size:20px;color:var(--muted);max-width:50ch;margin:20px 0 32px}
+.box{background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:18px;box-shadow:6px 6px 0 var(--ink)}
+textarea{width:100%;border:0;background:transparent;color:var(--ink);font:500 20px/1.4 'Instrument Sans',sans-serif;resize:none;min-height:84px;outline:none}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:transparent;color:var(--ink);padding:6px 12px;border-radius:99px;font:500 14px 'Instrument Sans',sans-serif;cursor:pointer}
+.chip:hover{border-color:var(--blue)}
+.btn{border:0;background:var(--blue);color:var(--on-blue);font:700 17px 'Fraunces',Georgia,serif;padding:13px 22px;border-radius:14px;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.wa{background:#25D366;color:#06260F;text-decoration:none;display:inline-block}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+#results{margin:44px 0 0}
+#results[hidden]{display:none}
+.echo{color:var(--muted);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.card .em{font-size:34px}
+.card h3{font-size:22px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{align-self:flex-start;font-weight:600;font-size:13px;padding:3px 10px;border-radius:99px;background:var(--sun);color:#12163A}
+.tag.free{background:var(--pink)}
+.price{margin-top:auto;font-weight:600}
+.book{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:10px;padding:7px 10px;font:600 14px 'Instrument Sans',sans-serif;cursor:pointer}
+.book:hover{background:var(--ink);color:var(--bg)}
+#venues{margin-top:28px}
+#venues[hidden]{display:none}
+.vh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.vh h3{font-size:26px}
+.close{border:0;background:transparent;color:var(--muted);font:600 15px 'Instrument Sans',sans-serif;cursor:pointer;text-decoration:underline}
+.venue{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:18px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;margin-bottom:14px}
+.venue h4{font:700 20px 'Fraunces',Georgia,serif;margin:0}
+.venue small{color:var(--muted);display:block}
+.vp{text-align:right}
+.vp b{font:800 26px 'Fraunces',Georgia,serif;color:var(--blue)}
+.slots{display:flex;flex-wrap:wrap;gap:8px;flex-basis:100%}
+.slot{border:1.5px solid var(--blue);background:transparent;color:var(--blue);padding:7px 14px;border-radius:10px;font:600 15px 'Instrument Sans',sans-serif;cursor:pointer}
+.slot:hover,.slot.on{background:var(--blue);color:var(--on-blue)}
+.conf{flex-basis:100%;margin:0;color:var(--blue);font-weight:600;min-height:1.4em}
+.note{font-size:14px;color:var(--blue);min-height:1.4em;margin:0}
+.export{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:24px}
+section.s{padding:84px 0 0}
+h2{font-size:clamp(30px,5vw,48px);font-weight:800;max-width:20ch;margin-bottom:22px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.two p{margin:0 0 14px;color:var(--muted)}
+.big{font:800 clamp(56px,10vw,96px)/1 'Fraunces',Georgia,serif;color:var(--blue)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:0;margin:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border-radius:18px;padding:20px;border:1.5px solid var(--line)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);font:700 17px 'Fraunces',Georgia,serif;margin-bottom:10px}
+.steps b{display:block;font:700 19px 'Fraunces',Georgia,serif;margin-bottom:4px}
+.steps span{color:var(--muted);font-size:15px}
+.money{background:var(--ink);color:var(--bg);border-radius:24px;padding:32px}
+.money h2{color:var(--bg)}
+.money p{max-width:56ch;margin:0;opacity:.85}
+.nx{padding:56px 0 0;text-align:right}
+.it{font-size:clamp(30px,5vw,52px);max-width:22ch}
+.iv{padding-top:56px}
+.iv h2{font-size:clamp(24px,4vw,34px);margin-bottom:16px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.kp>div{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:20px}
+.kp b{display:block;font:800 clamp(38px,6vw,58px)/1 'Fraunces',Georgia,serif;color:var(--blue);margin-bottom:8px}
+.kp span{color:var(--muted)}
+.rk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rk>div{border:2px solid var(--ink);border-radius:18px;padding:20px;background:var(--surface)}
+.rk h3{font-size:21px;margin-bottom:8px}
+.rk p{margin:0;color:var(--muted)}
+.fu>div{display:grid;grid-template-columns:minmax(120px,1.3fr) 2fr auto;gap:12px;align-items:center;margin-bottom:12px}
+.fu i{display:block;height:22px;background:var(--blue);border-radius:6px}
+.fu b{font-variant-numeric:tabular-nums}
+.sm{color:var(--muted);font-size:15px;margin:14px 0 0}
+footer{padding:64px 0 40px;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion:no-preference){.card{animation:pop .35s ease both}.card:nth-child(2){animation-delay:.08s}.card:nth-child(3){animation-delay:.16s}.card:nth-child(4){animation-delay:.24s}}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="main">
+<nav><div class="logo"><span>Tablée</span></div></nav>
+<header>
+<h1>Meet up without ending up at a bar.</h1>
+<p class="lead">Describe your evening in one sentence. Tablée suggests ideas, your group votes on WhatsApp, and it's settled.</p>
+<div class="box">
+<label for="p" style="position:absolute;left:-9999px">Describe your evening</label>
+<textarea id="p" placeholder="Ex: Tuesday evening near Saint-Lazare, we're four, small budget"></textarea>
+<div class="row">
+<div class="chips">
+<button class="chip" data-t="Tuesday evening near Saint-Lazare, we're four, small budget">Small budget, four of us</button>
+<button class="chip" data-t="Saturday night around Soho, six friends, comfortable budget">Saturday with friends</button>
+<button class="chip" data-t="Thursday evening, we're three, we want to keep it quiet">Quiet night in</button>
+</div>
+<button class="btn" id="go">Find ideas</button>
+</div>
+</div>
+<div id="results" hidden aria-live="polite">
+<p class="echo" id="echo"></p>
+<div class="grid" id="grid"></div>
+<div id="venues" hidden></div>
+<div class="export">
+<a class="btn wa" id="wa" target="_blank" rel="noopener">Export to WhatsApp</a>
+<span class="note" id="expnote">Your group gets the options and votes.</span>
+</div>
+</div>
+</header>
+<section class="s">
+<h2>One plan, three steps.</h2>
+<ol class="steps">
+<li><b>You describe</b><span>Day, area, group size, budget. One sentence is enough.</span></li>
+<li><b>We suggest</b><span>Karaoke, escape game, dinner at home with a recipe, game night: paid or free.</span></li>
+<li><b>You vote, you book</b><span>The poll goes out on WhatsApp. The winning idea is booked from the app.</span></li>
+</ol>
+</section>
+<section class="s">
+<div class="money">
+<h2>Free for the people who organize.</h2>
+<p>When your group picks a paid activity and you book through Tablée, we earn a commission from the venue. You pay nothing extra.</p>
+</div>
+</section>
+<footer>Tablée is a concept in progress. The ideas, venues and prices above are demo examples.</footer>
+</div>
+<script>
+var ACTS=[
+{id:'home',e:'🍝',n:'Dinner at home',d:'Everyone brings an ingredient. Recipe: creamy lemon-parmesan pasta, ready in 25 min.',p:0,l:'Free (≈ €4/person for groceries)',free:true},
+{id:'games',e:'🎲',n:'Board game night',d:'Codenames, Dixit, Skull: easy to start with four, nothing to buy if someone owns them.',p:0,l:'Free',free:true},
+{id:'karaoke',e:'🎤',n:'Private karaoke booth',d:'A room just for you, thousands of songs. Ideal to break the ice.',p:14,l:'≈ €14/person'},
+{id:'escape',e:'🔐',n:'Escape game',d:'60 minutes to escape together. The group discovers itself under pressure.',p:25,l:'≈ €25/person'}
+];
+var VEN={karaoke:[['The Golden Mic','Private booth, 4–8 people',12,5,['19:00','20:30','22:00']],['Studio Refrain','Room with a non-alcoholic bar',14,8,['19:30','21:00']],['Box Encore','Early-2000s vibe',17,12,['18:30','20:00','21:30']]],escape:[['The Lost Key','Theme: the heist of the century',22,6,['19:00','20:45']],['Enigma Club','Theme: secret lab',25,9,['19:15','20:30','22:00']],['The Last Carriage','Theme: Orient Express',29,11,['18:45','21:15']]]};
+var NUMS={two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+var $=function(i){return document.getElementById(i)};
+function cap(s){return s.replace(/\b\w/g,function(m){return m.toUpperCase()})}
+function parsePrompt(t){
+var low=t.toLowerCase(),n=4;
+var w=low.match(/\b(two|three|four|five|six|seven|eight|nine|ten)\b/),d=low.match(/\b(\d+)\b/);
+if(w)n=NUMS[w[1]];else if(d&&+d[1]>1&&+d[1]<30)n=+d[1];
+var day=(low.match(/\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/)||[])[1]||'tonight';
+var re=/\s+(?:we|with|and|for)\b/;
+var m=t.match(/(?:near|around|close to)\s+([^,.]+)/i)||t.match(/\b(?:in|at)\s+(?!the\b)([^,.]+)/i);
+var q=m?cap(m[1].split(re)[0].trim()):'';
+return {n:n,day:cap(day),q:q};
+}
+function showVenues(a,t){
+var p=parsePrompt(t),box=$('venues'),list=VEN[a.id];
+var h='<div class="vh"><h3>'+a.e+' '+a.n+': '+list.length+' venues for '+p.n+' people</h3><button class="close" id="vclose">Close</button></div>';
+list.forEach(function(v,i){
+h+='<div class="venue" data-i="'+i+'"><div><h4>'+v[0]+'</h4><small>'+v[1]+'</small><small>'+(p.q?v[3]+' min walk from '+p.q:'Near you')+'</small></div><div class="vp"><b>€'+(v[2]*p.n)+'</b><small>€'+v[2]+'/person × '+p.n+'</small></div><div class="slots">'+v[4].map(function(s){return '<button class="slot">'+p.day+' '+s+'</button>'}).join('')+'</div><p class="conf"></p></div>';
+});
+box.innerHTML=h;box.hidden=false;
+box.scrollIntoView({behavior:'smooth',block:'nearest'});
+$('vclose').onclick=function(){box.hidden=true};
+box.querySelectorAll('.slot').forEach(function(s){s.onclick=function(){
+box.querySelectorAll('.slot.on').forEach(function(x){x.classList.remove('on')});
+box.querySelectorAll('.conf').forEach(function(x){x.textContent=''});
+s.classList.add('on');
+var vn=s.closest('.venue'),v=list[+vn.dataset.i];
+vn.querySelector('.conf').textContent='Slot selected: '+v[0]+', '+s.textContent+', €'+(v[2]*p.n)+'. In the real app, payment happens here.';
+}});
+}
+var chosen=[];
+document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){$('p').value=c.dataset.t;$('p').focus()}});
+$('go').onclick=function(){
+$('venues').hidden=true;
+var t=$('p').value.trim();
+if(!t){$('p').focus();$('p').placeholder='Write a sentence first, or pick an example below.';return}
+var low=t.toLowerCase();
+var tight=/small budget|low budget|tight budget|cheap|broke|free|on a budget/.test(low);
+chosen=ACTS.slice();
+if(!tight)chosen.sort(function(a,b){return b.p-a.p});
+$('echo').textContent='For “'+t+'”, here are '+chosen.length+' ideas:';
+var g=$('grid');g.innerHTML='';
+chosen.forEach(function(a){
+var c=document.createElement('div');c.className='card';
+c.innerHTML='<div class="em">'+a.e+'</div><span class="tag'+(a.free?' free':'')+'">'+(a.free?'Free':'Paid')+'</span><h3>'+a.n+'</h3><p>'+a.d+'</p><div class="price">'+a.l+'</div>'+(a.free?'':'<button class="book">Book</button>')+'<p class="note"></p>';
+var b=c.querySelector('.book');
+if(b)b.onclick=function(){showVenues(a,t)};
+g.appendChild(c)});
+var txt='🍽️ What are we doing?\nVote for our next night out:\n\n'+chosen.map(function(a,i){return (i+1)+'️⃣ '+a.e+' '+a.n+' ('+a.l+')'}).join('\n')+'\n\nReply with the number of your choice!';
+$('wa').href='https://wa.me/?text='+encodeURIComponent(txt);
+$('results').hidden=false;
+$('results').scrollIntoView({behavior:'smooth',block:'start'});
+};
+</script>
+</body>
+</html>
